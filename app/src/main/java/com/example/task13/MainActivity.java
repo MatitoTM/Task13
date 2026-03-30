@@ -16,9 +16,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 /**
  * @author Matan Taito
- * @version 1.0
- * יישום זה מאפשר למשתמש לשנות את צבע הרקע של המסך באמצעות בחירת כפתורי רדיו (RadioButton),
- *בתנאי שהמתג (Switch) נמצא במצב פעיל.
+ * @version 1.1
+ * יישום זה מנהל את צבע הרקע של ממשק המשתמש באמצעות RadioGroup ו-Switch.
+ * היישום פועל בשני מצבים: שינוי צבע מיידי בעת בחירת כפתור רדיו כאשר המתג כבוי,
+ * או שינוי צבע רק לאחר לחיצה על כפתור ייעודי כאשר המתג פעיל.
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -42,13 +43,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * מתודת טיפול באירוע לחיצה (OnClick).
-     * <p>
-     * אם המתג (sw) דלוק, המתודה בודקת איזה כפתור רדיו נבחר ומשנה את צבע הרקע
-     * של ה-LinearLayout בהתאם. בסיום הפעולה, בחירת כפתורי הרדיו מתנקה.
-     * </p>
-     *
-     * @param view הרכיב עליו נלחץ (בדרך כלל כפתור ה-Button המפעיל).
+     * מתודה המטפלת בלחיצה על כפתור האישור.
+     * שינוי הצבע יתבצע רק אם המתג (Switch) נמצא במצב פעיל.
+     * בסיום הפעולה, הבחירה ב-RadioGroup מתנקה.
+     * * @param view הרכיב עליו התבצעה הלחיצה.
      */
     public void clicked(View view) {
         if (sw.isChecked())
@@ -60,5 +58,21 @@ public class MainActivity extends AppCompatActivity {
             else main.setBackgroundColor(Color.WHITE);
         }
         rG.clearCheck();
+    }
+    
+    /**
+     * מתודה המטפלת בבחירה ישירה של כפתור רדיו בתוך ה-RadioGroup.
+     * שינוי הצבע מתבצע באופן מיידי בהתאם לכפתור שנבחר, בתנאי שהמתג (Switch) כבוי.
+     * * @param view כפתור הרדיו הספציפי שנבחר על ידי המשתמש.
+     */
+    public void onRadioButtonClicked(View view) {
+        if (!sw.isChecked())
+        {
+            if (view.getId() == R.id.rB1) main.setBackgroundColor(Color.BLUE);
+            else if (view.getId() == R.id.rB2) main.setBackgroundColor(Color.YELLOW);
+            else if (view.getId() == R.id.rB3) main.setBackgroundColor(Color.GRAY);
+            else if (view.getId() == R.id.rB4) main.setBackgroundColor(Color.GREEN);
+            else main.setBackgroundColor(Color.WHITE);
+        }
     }
 }

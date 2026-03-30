@@ -42,7 +42,7 @@
             android:id="@+id/rG"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="27">
+            android:layout_weight="27" >
 
             <RadioButton
                 android:id="@+id/rB1"
@@ -51,7 +51,8 @@
                 android:layout_weight="25"
                 android:text="Blue"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="onRadioButtonClicked" />
 
             <RadioButton
                 android:id="@+id/rB2"
@@ -60,7 +61,8 @@
                 android:layout_weight="25"
                 android:text="Yellow"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="onRadioButtonClicked" />
 
             <RadioButton
                 android:id="@+id/rB3"
@@ -69,7 +71,8 @@
                 android:layout_weight="25"
                 android:text="Gray"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="onRadioButtonClicked" />
 
             <RadioButton
                 android:id="@+id/rB4"
@@ -78,7 +81,8 @@
                 android:layout_weight="25"
                 android:text="Green"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="onRadioButtonClicked" />
         </RadioGroup>
 
         <Space
